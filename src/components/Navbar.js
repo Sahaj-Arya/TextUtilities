@@ -1,12 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
+import "font-awesome/css/font-awesome.min.css";
 
 function Navbar({ title }) {
+  const [darkMode, setdarkMode] = useState(false);
+
+  let text = { color: darkMode ? "black" : "white" };
+
+  let nav = {
+    backgroundColor: darkMode ? "lightgray" : "black",
+  };
+
   return (
     <div>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+      <nav className="navbar navbar-expand-lg  " style={nav}>
         <div className="container-fluid">
           <a className="navbar-brand" href="/">
-            <h1>{title}</h1>
+            <h1 style={text}>{title}</h1>
           </a>
           <button
             className="navbar-toggler"
@@ -22,21 +31,35 @@ function Navbar({ title }) {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="/">
+                <a
+                  style={text}
+                  className="nav-link active"
+                  aria-current="page"
+                  href="/"
+                >
                   Home
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/">
+                <a style={text} className="nav-link" href="/">
                   About
                 </a>
               </li>
 
-              {/* <li className="nav-item">
-                <a className="nav-link disabled" href="/">
-                  Disabled
+              <li className="nav-item">
+                <a className="nav-link  " style={text}>
+                  {/* <i class="fas fa-camera"></i> */}
+                  <i
+                    className="fa fa-adjust "
+                    color="Tomato"
+                    onClick={() => setdarkMode(!darkMode)}
+                  >
+                    {darkMode ? " Dark Mode" : " Light Mode"}
+                  </i>
+
+                  {/* <i class="fa fa-bahai "> Dark Mode</i> */}
                 </a>
-              </li> */}
+              </li>
             </ul>
             <form className="d-flex">
               <input
@@ -45,7 +68,11 @@ function Navbar({ title }) {
                 placeholder="Search"
                 aria-label="Search"
               />
-              <button className="btn btn-outline-success" type="submit">
+              <button
+                style={text}
+                className="btn btn-outline-success"
+                type="submit"
+              >
                 Search
               </button>
             </form>

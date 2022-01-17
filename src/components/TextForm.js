@@ -25,6 +25,20 @@ function TextForm({ heading }) {
     settext(textArray.join(" "));
   };
 
+  const copyText = () => {
+    var text = document.getElementById("myBox");
+    text.select();
+    // text.setSelectionRange(0, 9999);
+    navigator.clipboard.writeText(text.value);
+  };
+
+  // const downloadText=(filename, text)=>{
+  //   var element = document.createElement('a');
+  //   element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+  //   element.setAttribute('download', filename);
+  //   element.style.display = 'none'; document.body.appendChild(element);
+  //   element.click(); document.body.removeChild(element);
+
   return (
     <div>
       <h1>{heading}</h1>
@@ -51,8 +65,8 @@ function TextForm({ heading }) {
       <button className="btn btn-primary mx-2" onClick={FirstLetterUp}>
         First Letter Uppercase
       </button>
-      <button className="btn btn-primary mx-2" onClick={() => ""}>
-        copy
+      <button className="btn btn-primary mx-2" onClick={copyText}>
+        Copy
       </button>
       <h1>Your Text Summary</h1>
       <p>
